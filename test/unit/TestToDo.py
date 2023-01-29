@@ -108,14 +108,9 @@ class TestDatabaseFunctions(unittest.TestCase):
         print ('Start: test_get_todo_error')
         # Testing file functions
         from src.todoList import get_item
-        from src.todoList import put_item
-
-        responsePut = put_item(self.text, self.dynamodb)
-        print ('Response put_item:' + str(responsePut))
-        idItem = json.loads(responsePut['body'])['id']
-        print ('Id item:' + idItem)
-        self.assertRaises(Exception, get_item(idItem))
         self.assertRaises(Exception, get_item("", self.dynamodb))
+        self.assertRaises(Exception, get_item("1", self.dynamodb))
+
     
     def test_list_todo(self):
         print ('---------------------')
