@@ -79,7 +79,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         from src.todoList import put_item
         # Table mock
         self.assertRaises(Exception, put_item("", self.dynamodb))
-        self.assertRaises(Exception, put_item("", self.dynamodb))
         print ('End: test_put_todo_error')
 
     def test_get_todo(self):
@@ -103,6 +102,15 @@ class TestDatabaseFunctions(unittest.TestCase):
             self.text,
             responseGet['text'])
         print ('End: test_get_todo')
+    
+    def test_get_todo_error(self):
+        print ('---------------------')
+        print ('Start: test_get_todo_error')
+        # Testing file functions
+        from src.todoList import get_item
+        self.assertRaises(Exception, get_item("", self.dynamodb))
+        self.assertRaises(Exception, get_item(""))
+
     
     def test_list_todo(self):
         print ('---------------------')
