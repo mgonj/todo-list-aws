@@ -109,7 +109,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         # Testing file functions
         from src.todoList import get_item
         self.assertRaises(Exception, get_item("", self.dynamodb))
-        self.assertRaises(Exception, get_item("1", self.dynamodb))
+        self.assertRaises(Exception, get_item(""))
 
     
     def test_list_todo(self):
